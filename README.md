@@ -1,5 +1,4 @@
 # PHOS4
-PHOS4
 projeto PHOS4 do primeiro semestre da Faculdade de Tecnologia São Paulo
 
 Criado em 2020 a PHOS4 tem o intuito de controlar o gasto de iluminosidade de seu escritório.
