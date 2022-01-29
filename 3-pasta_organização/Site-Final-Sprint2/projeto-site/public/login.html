@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="sortcut icon" href="./img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="./css/stylelogin.css">
+</head>
+
+<body>
+    <div class="fundo">
+        <div class="opc">
+            <div id="iconLogin">
+                <img id="userIconLogin" src="img/userLogin.png">
+            </div>
+
+            <div class="login">
+
+                <div class="usuario">
+                    <div class="log">
+                        <h3>Login</h3>
+                    </div>
+                    <form id="form_login" method="post" onsubmit="return entrar()">
+
+                    <input id="inpusuario" name="cnpj_cpf" placeholder="CNPJ" type="text" required>
+                    <br><br>
+                    <input id="inpsenha" name="senha" placeholder="Senha" type="password" required><br><br><br>
+                        <button id="btnentrar" class="btnlogin">Login</button>
+                        <button class="btnvoltar" onclick="voltar()">Voltar</button>
+                    </form>
+                
+                    <ul class="lista">
+                        <li>Não possui cadastro?<a href="index.html"> Contate-nos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="login"></div>
+</body>
+
+</html>
+<script>
+
+    function entrar() {
+        // aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.cnpj_usuario_meuapp = json.cnpj;
+                    sessionStorage.representante_meuapp = json.representante;
+                    sessionStorage.getItem('cnpj_usuario_meuapp');
+                    sessionStorage.nomefantasia_meuapp = json.nomefantasia;
+
+                    window.location.href = 'plantas.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    // function aguardar() {
+    //     btn_entrar.disabled = true;
+    //     img_aguarde.style.visibility = 'visible';
+    //     div_erro.style.visibility = 'hidden';
+    // }
+
+    // function finalizar_aguardar(resposta) {
+    //     btn_entrar.disabled = false;
+    //     img_aguarde.style.visibility = 'hidden';
+    //     div_erro.style.visibility = 'visible';
+    //     div_erro.innerHTML = resposta;
+    // }
+
+</script>

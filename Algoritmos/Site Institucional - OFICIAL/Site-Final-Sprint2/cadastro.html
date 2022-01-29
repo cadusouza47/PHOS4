@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro</title>
+        <link rel="sortcut icon" href="./img/logo.png" type="image/png" />
+        <link rel="stylesheet" href="./css/cadastro.css" >
+    </head>
+
+    <body>
+        <div class="fundo"> 
+            <div class="opc"> </div>
+            <div class="cadastro"> 
+                <div class="usuario">
+                    <div class="cad"> <h3>Cadastro</h3> </div>
+                    <input id="nome_empresa" type="text" placeholder="Razão social" required>
+                    <br><br>
+                    <input id="telefone" type="text" placeholder="Telefone" required>
+                    <br><br>
+                    <input id="email"  type="email" placeholder="Email" required>
+                    <br><br>
+                    <input id="endereco"  type="text" placeholder="Endereço" required >
+                    <br><br>
+                    <input id="cnpj" type="text" placeholder="CNPJ" required>
+                    <br><br>
+                    <input id="senha" placeholder="Senha" type="password" required><br><br>
+                    <a href="#">
+                        <button onclick="entrar()"><i>Cadastrar</i></button>
+                    </a> 
+                </div>
+        </div>
+    </body>
+</html><script>
+    function entrar() {
+        if (nome_empresa.value == "phos4" && telefone.value == "12345678" && email.value == "123@gmail.com" && endereco.value == "rua haddock lobo" && cnpj.value == "00000" && senha.value == "120") {
+            window.location.href = "file:///C:/Users/cebs/Documents/Bandtec2/1%C2%BA%20Semestre/Pesquisa%20e%20Inova%C3%A7%C3%A3o/Sprint%202%20-%20Phos4/PHOS-4/Algoritmos/Site%20Institucional%20-%20OFICIAL/Site-Final-Sprint2/index.html";
+            // Aqui o usuário prenche os campos e após o cadastro o usuário será direcionado para a página inicial
+        }
+        else {
+            alert("Campos preenchidos incorretamente")
+        }
+    }
+</script>

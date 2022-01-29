@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="sortcut icon" href="./img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="./css/cadastro.css">
+</head>
+
+<body>
+    <div class="fundo">
+        <div class="opc"> </div>
+        <div class="cadastrousuario">
+            <div class="usuario">
+                <div class="cad">
+                    <h3>Cadastro</h3>
+                </div>
+
+                <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                    <div id="divisoria">
+                        <label for="nome">Nome:</label>
+                        <input id="nome" name="nome" type="text" placeholder="Nome" required>
+
+                        <label for="email">Email:</label>
+                        <input id="email" name="email" type="email" placeholder="Email" required>
+
+                        <label for="CPF">CPF:</label>
+                        <input id="CPF" name="CPF" type="number" placeholder="CPF" required>
+
+                        <label for="Função">Função:</label>
+                        <input id="funcao" name="funcao" type="text" placeholder="Função" required>
+
+                        <label for="senha">Senha:</label>
+                        <input id="senha" name="senha" type="password" placeholder="Senha" required maxlength="20">
+
+                        <label for="senha2">Repetir senha:</label>
+                        <input id="senha2" name="senha2" type="password" placeholder="Repetir senha" required maxlength="20">
+                            
+                    </div>
+                    <div class="btn1">
+                        <button id="botao1">Enviar</button>
+                        <a href="index.html">
+                            <button id="botao2" onclick="entrar()">Voltar</button>
+                        </a>
+                    </div>
+                </form>
+</body>
+
+</html>
+<script>
+
+    function cadastrar() {
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar_usuario", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+                alert('cadastro realizado com sucesso')
+                window.location.href = 'login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                });
+            }
+        });
+
+        return false;
+    }
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="sortcut icon" href="./img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="./css/stylelogin.css">
+</head>
+
+<body>
+    <div class="fundo">
+        <div class="opc">
+            <div id="iconLogin">
+                <img id="userIconLogin" src="img/userLogin.png">
+            </div>
+
+            <div class="login">
+
+                <div class="usuario">
+                    <div class="log">
+                        <h3>Login</h3>
+                    </div>
+                    <input id="inpusuario" placeholder="Cnpj/E-mail" type="email" required>
+                    <br><br>
+                    <input id="inpsenha" placeholder="Senha" type="password" required><br><br><br>
+                    <a href="#">
+                        <button class="btnlogin" onclick="entrar()">Login</button>
+                        <button class="btnvoltar" onclick="voltar()">Voltar</button>
+                    </a>
+                    <ul class="lista">
+                        <li>Não possui cadastro?<a href="cadastro.html"> Contate-nos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="login"></div>
+</body>
+
+</html>
+<script>
+    function entrar() {
+        if (inpusuario.value == "phos4@gmail.com" && inpsenha.value == "1234") {
+            window.location.href = "dashboard.html";
+            // Aqui o usuário prenche os campos com o email e senha acima, e após o login o usuário será direcionado para a página inicial
+        }
+        else {
+            alert("Usuário não cadastrado")
+        }
+    }
+    function voltar() {
+        window.location.href = "index.html";
+    }
+</script>
